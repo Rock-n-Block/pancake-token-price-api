@@ -18,7 +18,7 @@ class Response(BaseModel):
 app = FastAPI()
 
 
-@app.post('/', response_model=Response)
+@app.post('/', response_model=Response, description='Token prices of ERC-20 or LP-Tokens listed on PancakeSwap')
 async def prices(payload: Payload):
     redis = await aioredis.from_url("redis://redis:6379", encoding="utf-8", decode_responses=True)
     result = {}
