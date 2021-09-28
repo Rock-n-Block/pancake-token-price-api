@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from typing import List, Dict
 from app.settings import PANCAKESWAP_API_URL
 from app.utils import calculate_lp_token_price
+from fastapi.middleware.cors import CORSMiddleware
 
 
 class Payload(BaseModel):
@@ -16,6 +17,10 @@ class Response(BaseModel):
 
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=['*']
+)
 
 
 @app.post('/', response_model=Response, description='Token prices of ERC-20 or LP-Tokens listed on PancakeSwap')
