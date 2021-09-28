@@ -2,7 +2,7 @@ import requests
 import aioredis
 from fastapi import FastAPI
 from pydantic import BaseModel
-apifrom typing import List, Dict
+from typing import List, Dict
 from app.settings import PANCAKESWAP_API_URL
 from app.utils import calculate_lp_token_price
 
